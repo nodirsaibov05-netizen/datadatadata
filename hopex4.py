@@ -622,7 +622,26 @@ elif page == "B. Cleaning & Preparation":
                 })
                 show_preview(before_df, df, "Value mapping")
                 st.success(f"Applied mapping to '{mapping_col}'. Changed {changed} values.")
-                st.rerun()
+                st.session_state.df_working = df
+                        st.session_state.transform_log.append({...})
+
+                        st.success(f"Applied mapping to '{mapping_col}'. Changed {changed_values} values.")
+                        
+                        # ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
+                        # ВСТАВЛЯЕШЬ СЮДА (после success, вместо rerun)
+                        st.markdown("### 📊 Before / After Preview")
+                        col1, col2 = st.columns(2)
+                        
+                        with col1:
+                            st.markdown("**Before**")
+                            st.dataframe(before_df[[mapping_col]].head(10), use_container_width=True)
+                        
+                        with col2:
+                            st.markdown("**After**")
+                            st.dataframe(df[[mapping_col]].head(10), use_container_width=True)
+                        
+                        st.divider()
+            #st.rerun()
 
            
            
