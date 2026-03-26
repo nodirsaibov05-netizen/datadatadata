@@ -624,18 +624,18 @@ elif page == "B. Cleaning & Preparation":
                 st.success(f"Applied mapping to '{mapping_col}'. Changed {changed} values.")
                 st.session_state.df_working = df
                         
-                    st.markdown("### 📊 Before / After Preview")
-                    col1, col2 = st.columns(2)
-                    
-                    with col1:
-                        st.markdown("**Before**")
-                        st.dataframe(before_df[[mapping_col]].head(10), use_container_width=True)
-                    
-                    with col2:
-                        st.markdown("**After**")
-                        st.dataframe(df[[mapping_col]].head(10), use_container_width=True)
-                    
-                    st.divider()
+                st.markdown("### 📊 Before / After Preview")
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.markdown("**Before**")
+                    st.dataframe(before_df[[mapping_col]].head(10), use_container_width=True)
+                
+                with col2:
+                    st.markdown("**After**")
+                    st.dataframe(df[[mapping_col]].head(10), use_container_width=True)
+                
+                st.divider()
             #st.rerun()
 
            
