@@ -588,7 +588,7 @@ elif page == "B. Cleaning & Preparation":
                 st.rerun()
 
             
-                            st.markdown("**3. Value mapping / replacement**")
+            st.markdown("**3. Value mapping / replacement**")
             mapping_col = st.selectbox(
                 "Select column for mapping",
                 options=cat_cols,
