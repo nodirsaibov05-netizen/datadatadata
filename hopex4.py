@@ -623,12 +623,7 @@ elif page == "B. Cleaning & Preparation":
                 show_preview(before_df, df, "Value mapping")
                 st.success(f"Applied mapping to '{mapping_col}'. Changed {changed} values.")
                 st.session_state.df_working = df
-                        st.session_state.transform_log.append({...})
-
-                        st.success(f"Applied mapping to '{mapping_col}'. Changed {changed_values} values.")
                         
-                        # ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
-                        # ВСТАВЛЯЕШЬ СЮДА (после success, вместо rerun)
                         st.markdown("### 📊 Before / After Preview")
                         col1, col2 = st.columns(2)
                         
