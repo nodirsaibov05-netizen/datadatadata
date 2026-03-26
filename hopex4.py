@@ -625,18 +625,15 @@ elif page == "B. Cleaning & Preparation":
                 st.session_state.df_working = df
                         
                 st.markdown("### 📊 Before / After Preview")
-                col1, col2 = st.columns(2)
+                col1, col2 = st.columns(10)
                 
                 with col1:
                     st.markdown("**Before**")
-                    st.dataframe(before_df[[mapping_col]].head(10), use_container_width=True)
-                
+                    st.dataframe(stats_before, use_container_width=True)
                 with col2:
                     st.markdown("**After**")
-                    st.dataframe(df[[mapping_col]].head(10), use_container_width=True)
-                
-                st.divider()
-            #st.rerun()
+                    st.dataframe(stats_after, use_container_width=True)
+                            #st.rerun()
 
            
            
