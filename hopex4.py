@@ -588,31 +588,32 @@ elif page == "B. Cleaning & Preparation":
                 st.rerun()
 
             
-            st.markdown("**3. Value mapping / replacement**")
+                            st.markdown("**3. Value mapping / replacement**")
             mapping_col = st.selectbox(
                 "Select column for mapping",
                 options=cat_cols,
                 key="mapping_col_select"
             )
-
             mapping_input = st.text_area(
                 "Enter mapping (old_value:new_value, one per line)",
                 value="old_value1:new_value1\nold_value2:new_value2",
                 height=100
             )
-
+            
             if mapping_input and st.button("Apply mapping", type="primary"):
                 before_df = df.copy()
+                
                 mapping_dict = {}
                 for line in mapping_input.strip().split("\n"):
                     if ":" in line:
                         old, new = line.split(":", 1)
                         mapping_dict[old.strip()] = new.strip()
-
+                
                 df[mapping_col] = df[mapping_col].replace(mapping_dict)
                 changed = (before_df[mapping_col] != df[mapping_col]).sum()
-
+                
                 st.session_state.df_working = df
+                
                 st.session_state.transform_log.append({
                     "step": "value_mapping",
                     "column": mapping_col,
@@ -620,19 +621,23 @@ elif page == "B. Cleaning & Preparation":
                     "changed_values": changed,
                     "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
                 })
-                show_preview(before_df, df, "Value mapping")
+                
                 st.success(f"Applied mapping to '{mapping_col}'. Changed {changed} values.")
-                                        
+                
+                # ←←← ОДНА ТАБЛИЦА BEFORE / AFTER (как ты просил) ←←←
                 st.markdown("### Before / After")
                 col1, col2 = st.columns(2)
                 
                 with col1:
                     st.markdown("**Before**")
-                    st.dataframe(before_df.head(5), use_container_width=True)
+                    st.dataframe(before_df.head(10), use_container_width=True)
                 
                 with col2:
                     st.markdown("**After**")
-                    st.dataframe(df.head(5), use_container_width=True)
+                    st.dataframe(df.head(10), use_container_width=True)
+                
+                st.divider()
+                # st.rerun()   ← закомментировано или удалено
 
            
            
