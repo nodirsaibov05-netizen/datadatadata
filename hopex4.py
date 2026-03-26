@@ -56,7 +56,7 @@ if page == "A. Upload & Overview":
 
     st.markdown(
         "Upload your file in one of the following formats: **CSV**, **Excel (.xlsx)** or **JSON**.\n"
-        "For coursework requirements, datasets should ideally have ≥ 1000 rows and ≥ 8 columns."
+    
     )
 
     # Choosing the separator for CSV file
